@@ -17,9 +17,11 @@ while getopts ":bsnl" opt; do
         n)
             echo $(bitcoin-cli -regtest getnewaddress);;
         l)
-            echo $(bitcoin-cli -regtest listunspent);;
+            echo $(bitcoin-cli -regtest listunspent) | python -m json.tool;;
         \?)
             echo "invalid option";;
+        :)
+            echo "Option -$OPTARG requires an argument." >&2
         exit 1;;
     esac
 done
