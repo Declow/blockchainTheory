@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 send_to_address() {
     echo "Enter address"
@@ -20,8 +20,5 @@ while getopts ":bsnl" opt; do
             echo $(bitcoin-cli -regtest listunspent) | python -m json.tool;;
         \?)
             echo "invalid option";;
-        :)
-            echo "Option -$OPTARG requires an argument." >&2
-        exit 1;;
     esac
 done
